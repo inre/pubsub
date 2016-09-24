@@ -1,0 +1,30 @@
+{
+  "name": "pubsub",
+  "version": "0.1.0",
+  "description": "Pub/Sub is a message borker over gRPC protocol",
+  "main": "index.js",
+  "scripts": {
+    "test": "cucumber",
+    "proto": "protoc -I ./definitions --js_out=import_style=commonjs,binary:lib/proto --ruby_out=features/support definitions/**/*.proto",
+    "dev": "DEBUG=* node runner.js",
+    "start": "forever start --minUptime 1000 --spinSleepTime 1000 runner.js",
+    "stop":  "forever stop runner.js",
+    "sub": "node examples/sub.js",
+    "pub": "node examples/pub.js"
+  },
+  "author": "Maksim V.",
+  "license": "MIT",
+  "dependencies": {
+    "binary-parser": "^1.1.5",
+    "debug": "^2.2.0",
+    "google-protobuf": "^3.0.0",
+    "grpc": "^1.0.0",
+    "ioredis": "^2.3.0",
+    "uuid": "^2.0.3"
+  },
+  "devDependencies": {
+    "ava": "^0.16.0",
+    "eslint": "^3.5.0",
+    "eslint-config-kupibilet": "^5.0.0"
+  }
+}
