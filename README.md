@@ -1,13 +1,21 @@
 # Pubsub
 
+Here is the API:
+
+```protobuf
+service Broker {
+  rpc Publish(PublishMessages) returns (Empty) {}
+  rpc Subscribe(Subscription) returns (stream ReceivedMessage) {}
+}
+```
+
 ## Installation
 
 ```bash
-npm i --production
-npm i ava -g
+git clone git@github.com:inre/pubsub.git pubsub && cd pubsub
+npm i
 ```
-
-## Quickstart
+## Quick Start
 
 ### Broker
 
@@ -37,4 +45,13 @@ Publish to topic:
 
 ```bash
 npm run pub topic1 "payload"
+```
+
+### Tests
+
+```bash
+npm stop
+gem install cucumber
+gem install thread
+npm test
 ```
