@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package pubsub;
+
+service Broker {
+  rpc Publish(PublishMessages) returns (Empty) {}
+  rpc Subscribe(Subscription) returns (stream ReceivedMessage) {}
+//  rpc Acknowledge(AcknowledgeMessages) returns (Empty) {}
+}
+
+message Empty {}
+
+message Timestamp {
+  int64 seconds = 1;
+  int32 nanos = 2;
+}
+
+message Payload {
+  bytes data = 1;
+}
+
+message ReceivedMessage {
+  string topic = 1;
+  string message_id = 2;
+  Payload payload = 3;
+  Timestamp publish_time = 4;
+}
+
+message StoredMessage {
+  string message_id = 1;
+  Payload payload = 2;
+  Timestamp publish_time = 3;
+}
+
+message PublishMessages {
+  string topic = 1;
+  repeated Payload messages = 2;
+}
+
+message Subscription {
+  repeated string topics = 1;
+  int32 maxMessages = 2;
+}
+
+//message AcknowledgeMessages {
+//  repeated string message_ids = 1;
+//}
