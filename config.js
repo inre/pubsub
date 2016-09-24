@@ -14,7 +14,7 @@ const defaultConfig = {
   },
   // Settings for the broker class
   broker: {
-    maxSubscribersOnTopic: 100
+    maxSubscribersOnTopic: 100,
   },
   // Requered for `redis` backend
   redis: {
