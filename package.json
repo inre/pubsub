@@ -4,7 +4,7 @@
   "description": "Pub/Sub is a message borker over gRPC protocol",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber",
+    "test": "ava && cucumber",
     "proto": "protoc -I ./definitions --js_out=import_style=commonjs,binary:lib/proto --ruby_out=features/support definitions/**/*.proto",
     "dev": "DEBUG=* node runner.js",
     "start": "forever start --minUptime 1000 --spinSleepTime 1000 runner.js",
